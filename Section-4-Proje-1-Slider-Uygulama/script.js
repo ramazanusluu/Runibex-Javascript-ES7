@@ -28,8 +28,13 @@ const models = [
 
 let index = 0;
 let slayCount = models.length;
+let settings = {
+  duration: "2000",
+  random: false,
+};
+var interval;
 
-showSlide(index);
+init(settings);
 
 //-------------------------------------------------------------------
 
@@ -67,3 +72,40 @@ function showSlide(i) {
 
   document.querySelector(".card-link").setAttribute("href", models[index].link);
 }
+
+//-------------------------------------------------------------------
+
+function init(settings) {
+  let prev;
+  interval = setInterval(function () {
+    if (settings.random) {
+      //random index
+      do {
+        index = Math.floor(Math.random() * slayCount);
+      } while (index == prev);
+
+      prev = index;
+    } else {
+      //artan index
+      if (slayCount == index + 1) {
+        index = -1;
+      }
+      showSlide(index);
+      console.log(index);
+      index++;
+    }
+
+    showSlide(index);
+  }, settings.duration);
+}
+
+document.querySelectorAll(".arrow").forEach(function (item) {
+  item.addEventListener("mouseenter", function () {
+    clearInterval(interval);
+  });
+});
+document.querySelectorAll(".arrow").forEach(function (item) {
+  item.addEventListener("mouseleave", function () {
+    init(settings);
+  });
+});

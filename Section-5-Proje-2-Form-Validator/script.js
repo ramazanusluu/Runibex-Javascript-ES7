@@ -24,26 +24,41 @@ const validateEmail = (email) => {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (username.value === "") {
-    error(username, "Username zorunlu alan");
-  } else {
-    success(username);
-  }
-  if (email.value === "") {
-    error(email, "Email zorunlu alan");
-  } else if (!validateEmail(email.value)) {
-    error(email, "Email adresi hatalı");
-  } else {
-    success(email);
-  }
-  if (password.value === "") {
-    error(password, "Password zorunlu alan");
-  } else {
-    success(password);
-  }
-  if (repassword.value === "") {
-    error(repassword, "Re-Password zorunlu alan");
-  } else {
-    success(repassword);
-  }
+  // if (username.value === "") {
+  //   error(username, "Username zorunlu alan");
+  // } else {
+  //   success(username);
+  // }
+  // if (email.value === "") {
+  //   error(email, "Email zorunlu alan");
+  // } else if (!validateEmail(email.value)) {
+  //   error(email, "Email adresi hatalı");
+  // } else {
+  //   success(email);
+  // }
+  // if (password.value === "") {
+  //   error(password, "Password zorunlu alan");
+  // } else {
+  //   success(password);
+  // }
+  // if (repassword.value === "") {
+  //   error(repassword, "Re-Password zorunlu alan");
+  // } else {
+  //   success(repassword);
+  // }
+  checkRequired([username, email, password, repassword]);
 });
+
+//---------------------------------------------------------
+
+function checkRequired(inputs) {
+  inputs.forEach(function (input) {
+    if (input.value === "") {
+      error(input, `${input.id} is required`);
+    } else if (!validateEmail(email.value)) {
+      error(email, "Email adresi hatalı");
+    } else {
+      success(input);
+    }
+  });
+}

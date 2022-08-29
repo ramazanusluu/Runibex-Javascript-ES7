@@ -47,6 +47,9 @@ form.addEventListener("submit", function (e) {
   //   success(repassword);
   // }
   checkRequired([username, email, password, repassword]);
+  checkLength(username, 3, 5);
+  checkLength(password, 7, 12);
+  checkPasswords(password, repassword);
 });
 
 //---------------------------------------------------------
@@ -61,4 +64,24 @@ function checkRequired(inputs) {
       success(input);
     }
   });
+}
+
+//---------------------------------------------------------
+
+function checkLength(input, min, max) {
+  if (input.value.length < min) {
+    error(input, `${input.id} en az ${min} karakter olmalıdır`);
+  } else if (input.value.length > max) {
+    error(input, `${input.id} en fazla ${max} karakter olmalıdır`);
+  } else {
+    success(input);
+  }
+}
+
+//---------------------------------------------------------
+
+function checkPasswords(input1, input2) {
+  if (input1.value !== input2.value) {
+    error(input2, "Parolalar eşleşmiyor");
+  }
 }

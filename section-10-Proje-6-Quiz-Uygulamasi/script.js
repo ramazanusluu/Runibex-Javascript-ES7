@@ -2,7 +2,6 @@ function Soru(soruMetni, cevapSecenekleri, dogruCevap) {
   this.soruMetni = soruMetni;
   this.cevapSecenekleri = cevapSecenekleri;
   this.dogruCevap = dogruCevap;
-  console.log(this);
 }
 
 Soru.prototype.cevabıKontrolEt = function (cevap) {
@@ -30,7 +29,7 @@ let soru2 = new Soru(
 
 let sorular = [
   new Soru(
-    "Hangisi javascript paket yönetim uygulamasıdır",
+    "1-Hangisi javascript paket yönetim uygulamasıdır",
     {
       a: "Node.js",
       b: "Typescript",
@@ -39,7 +38,7 @@ let sorular = [
     "c"
   ),
   new Soru(
-    "Hangisi javascript paket yönetim uygulamasıdır",
+    "2-Hangisi javascript paket yönetim uygulamasıdır",
     {
       a: "Node.js",
       b: "Typescript",
@@ -48,7 +47,7 @@ let sorular = [
     "c"
   ),
   new Soru(
-    "Hangisi javascript paket yönetim uygulamasıdır",
+    "3-Hangisi javascript paket yönetim uygulamasıdır",
     {
       a: "Node.js",
       b: "Typescript",
@@ -57,7 +56,7 @@ let sorular = [
     "c"
   ),
   new Soru(
-    "Hangisi javascript paket yönetim uygulamasıdır",
+    "4-Hangisi javascript paket yönetim uygulamasıdır",
     {
       a: "Node.js",
       b: "Typescript",
@@ -67,4 +66,22 @@ let sorular = [
   ),
 ];
 
-console.log(soru1.cevabıKontrolEt("c"));
+function Quiz(sorular) {
+  this.sorular = sorular;
+  this.soruIndex = 0;
+}
+
+Quiz.prototype.soruGetir = function () {
+  return this.sorular[this.soruIndex];
+};
+
+const quiz = new Quiz(sorular);
+
+document.querySelector(".btn-start").addEventListener("click", function () {
+  if (quiz.sorular.length != quiz.soruIndex) {
+    console.log(quiz.soruGetir());
+    quiz.soruIndex += 1;
+  } else {
+    console.log("Quiz Bitti");
+  }
+});

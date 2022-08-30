@@ -39,10 +39,12 @@ function Soru(soruMetni, cevapSecenekleri, dogruCevap) {
   this.soruMetni = soruMetni;
   this.cevapSecenekleri = cevapSecenekleri;
   this.dogruCevap = dogruCevap;
-  this.cevabıKontrolEt = function (cevap) {
-    return cevap === this.dogruCevap;
-  };
+  console.log(this);
 }
+
+Soru.prototype.cevabıKontrolEt = function (cevap) {
+  return cevap === this.dogruCevap;
+};
 
 let soru1 = new Soru(
   "Hangisi javascript paket yönetim uygulamasıdır",
@@ -63,12 +65,12 @@ let soru2 = new Soru(
   "b"
 );
 
-console.log(soru1.soruMetni);
-console.log(soru1.dogruCevap);
+// console.log(soru1.soruMetni);
+// console.log(soru1.dogruCevap);
 
-console.log(soru2.doruMetni);
-console.log(soru2.dogruCevap);
-console.log(soru1.cevabıKontrolEt("c"));
+// console.log(soru2.doruMetni);
+// console.log(soru2.dogruCevap);
+// console.log(soru1.cevabıKontrolEt("c"));
 
 //-------------------------------------------------------------------
 
@@ -93,7 +95,9 @@ let sorular = [
   ),
 ];
 
-console.log(sorular[0]);
-for (let s of sorular) {
-  console.log(s.soruMetni);
-}
+// console.log(sorular[0]);
+// for (let s of sorular) {
+//   console.log(s.soruMetni);
+// }
+
+console.log(soru1.cevabıKontrolEt("c"));

@@ -17,13 +17,27 @@ ui.btn_next.addEventListener("click", function () {
     ui.soruSayisiniGoster(quiz.soruIndex + 1, quiz.sorular.length);
   } else {
     console.log("Quiz Bitti");
+    ui.quiz_box.classList.remove("active");
+    ui.score_box.classList.add("active");
+    ui.skoruGoster(quiz.sorular.length, quiz.dogruCevapSayisi);
   }
+});
+
+ui.btn_quit.addEventListener("click", function () {
+  window.location.reload();
+});
+ui.btn_replay.addEventListener("click", function () {
+  quiz.soruIndex = 0;
+  quiz.dogruCevapSayisi = 0;
+  ui.btn_start.click();
+  ui.score_box.classList.remove("active");
 });
 
 function optionSelected(option) {
   let cevap = option.querySelector("span b").textContent;
   let soru = quiz.soruGetir();
   if (soru.cevabıKontrolEt(cevap)) {
+    quiz.dogruCevapSayisi += 1;
     option.classList.add("correct");
     option.insertAdjacentHTML("beforeend", ui.correctIcon);
   } else {
@@ -35,4 +49,3 @@ function optionSelected(option) {
   }
   ui.btn_next.classList.add("show");
 }
-

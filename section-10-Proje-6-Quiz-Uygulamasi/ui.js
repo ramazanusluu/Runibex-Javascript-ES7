@@ -1,7 +1,10 @@
 function UI() {
   (this.btn_start = document.querySelector(".btn-start")),
     (this.btn_next = document.querySelector(".next-btn")),
+    (this.btn_replay = document.querySelector(".btn-replay")),
+    (this.btn_quit = document.querySelector(".btn-quit")),
     (this.quiz_box = document.querySelector(".quiz-box")),
+    (this.score_box = document.querySelector(".score_box")),
     (this.option_list = document.querySelector(".option_list")),
     (this.correctIcon =
       '<div class="icon"><i class="fa-solid fa-check"></i></div>'),
@@ -32,4 +35,9 @@ UI.prototype.soruSayisiniGoster = function (soruSirasi, toplamSoru) {
       <span class="badge bg-warning">${soruSirasi} / ${toplamSoru}</span>
     `;
   document.querySelector(".quiz-box .question_index").innerHTML = tag;
+};
+
+UI.prototype.skoruGoster = function (toplamSoru, dogruCevap) {
+  let tag = `Toplam ${toplamSoru} sorudan ${dogruCevap} doğru cevap verdiniz.`;
+  document.querySelector(".score_box .score_text").innerHTML = tag;
 };

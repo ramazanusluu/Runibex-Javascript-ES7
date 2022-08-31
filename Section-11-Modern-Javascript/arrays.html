@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const sayilar = [1, 5, 7, 3, 2, 67];
+      //   const tekSayilar = [];
+      //   for (let sayi of sayilar) {
+      //     if (sayi % 2 == 1) {
+      //       tekSayilar.push(sayi);
+      //     }
+      //   }
+      //  console.log(tekSayilar);
+
+      //   const tekSayiKontrol = (sayi) => sayi % 2 == 1;
+      //   const tekSayilar = sayilar.filter(tekSayiKontrol);
+      //   console.log(tekSayilar);
+
+      // const tekSayilar = sayilar.filter((sayi) => sayi % 2 == 1);
+      // console.log(tekSayilar);
+
+      const tekSayilar = sayilar.map((sayi) => sayi % 2 == 1);
+      //   console.log(tekSayilar);
+
+      const urunler = [
+        {
+          urunAdi: "iphone 11",
+          fiyat: 12000,
+        },
+        {
+          urunAdi: "iphone 12",
+          fiyat: 15000,
+        },
+        {
+          urunAdi: "iphone 13",
+          fiyat: 18000,
+        },
+        {
+          urunAdi: "iphone 14",
+          fiyat: 20000,
+        },
+      ];
+
+      const map = urunler.map((urun) => urun.urunAdi);
+      console.log(map);
+
+      const filter = urunler.filter((urun) => urun.fiyat > 15000);
+      console.log(filter);
+
+      const filtrelenenUrunler = urunler.filter((urun) => urun.fiyat > 15000);
+      let filter_map = filtrelenenUrunler.map((urun) => urun.urunAdi);
+      console.log(filter_map);
+
+      const filter2 = urunler
+        .filter((urun) => urun.fiyat > 15000)
+        .map((urun) => urun.urunAdi);
+      console.log(filter2);
+
+      // Sadece tek bir değer, filtrelenen ürünler bir dizi halinde geliyor
+      const sonuc = urunler.find((urun) => urun.fiyat > 12000);
+      console.log(sonuc);
+      //index ile ilgeniliyorsa;
+      const sonuc2 = urunler.findIndex((urun) => urun.fiyat > 12000);
+      console.log(sonuc2);
+    </script>
+  </body>
+</html>

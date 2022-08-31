@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //array destructuring
+
+      //   let name = ["Ramazan", "USLU"];
+      //   let firstname = name[0];
+      //   let lastname = name[1];
+      //   console.log(firstname, lastname);
+
+      //   let name = ["Ramazan", "USLU"];
+
+      //   let [firstname, lastname] = name;
+      //   console.log(firstname, lastname);
+
+      //   let name = ["Ramazan", "USLU"];
+
+      //   let [firstname, lastname] = "Ramazan USLU".split(" ");
+      //   console.log(firstname, lastname);
+
+      let user = ["Ramazan", "Uslu", "Hatay", "Antakya", "Akasya"];
+      let [firstname, lastname, ...address] = user;
+      console.log(firstname, lastname, address);
+      console.log("----------------------------------------------");
+      //--------------------------------------------------------
+      //object destructuring
+      let urun = {
+        marka: "Apple",
+        model: "Iphone",
+        fiyat: 20000,
+        satisDurumu: true,
+      };
+      let { marka, model, fiyat = 0, satisDurumu = false } = urun;
+      //   console.log(marka, model, fiyat, satisDurumu);
+
+      function urunGoster(obj) {
+        let { marka, model, fiyat = 0, satisDurumu = false } = obj;
+        console.log(marka, model, fiyat, satisDurumu);
+      }
+      urunGoster(urun);
+    </script>
+  </body>
+</html>

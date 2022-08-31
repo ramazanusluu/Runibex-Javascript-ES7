@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ES5
+      function selamlama1() {
+        console.log("React");
+      }
+      selamlama1();
+      var selamlama2 = function () {
+        console.log("javascript");
+      };
+      selamlama2();
+      //---------------------------------------------------
+      //ES6 - arrow function
+      const selamlama3 = () => console.log("ES6 Arror function");
+      selamlama3();
+      const selamlama4 = () => {
+        console.log("Frontend");
+      };
+      selamlama4();
+      const selamlama5 = (isim) => {
+        console.log("React Developer", isim);
+      };
+      selamlama5("Ramazan");
+      //---------------------------------------------------
+      //Hesaplama işlemi-ES5
+      var toplamES5 = function (a, b) {
+        return a + b;
+      };
+      var sonuc = toplamES5(10, 20);
+      console.log(sonuc);
+      //ES-6
+      const toplamES6 = (a, b) => a + b;
+      let deger = toplamES6(10, 10);
+      console.log(deger);
+
+      const toplamES6_2 = (a, b) => {
+        return a + b;
+      };
+      let deger2 = toplamES6_2(35, 35);
+      console.log(deger2);
+    </script>
+  </body>
+</html>

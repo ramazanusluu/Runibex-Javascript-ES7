@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const msg = ["Benim", "Adım", "Ramazan", "USLU"];
+      //   let sonuc = "";
+      //   for (let x of msg) {
+      //     sonuc += x + " ";
+      //   }
+      //   console.log(sonuc);
+      //   //---------------------------------------------------
+      //   //Bu işlemleri spread operator yarımıyla çok daha kolay yapabiliriz.
+      //   console.log(...msg);
+
+      //   //---------------------------------------------------
+
+      //   const dizi1 = ["bir", "iki"];
+      //   const dizi2 = ["üç", "dört"];
+
+      //   const dizi3 = [dizi1, dizi2];
+      //   console.log(dizi3);
+
+      //   const dizi4 = [...dizi1, ...dizi2];
+      //   console.log(dizi4);
+
+      //   const dizi5 = [...dizi1, ...dizi2, "beş", "altı"];
+      //   console.log(dizi5);
+
+      const sayilar1 = [1, 2, 3];
+      //   const sayilar2 = sayilar1; //referance kopyalama
+      const sayilar2 = [...sayilar1];
+
+      sayilar1[0] = 10;
+
+      console.log(sayilar1, sayilar2);
+
+      //---------------------------------------------------
+      const user = {
+        username: "ramazanuslu",
+        email: "info@gmail.com",
+      };
+      const address = {
+        username: "react",
+        city: "Hatay",
+      };
+      console.log({ ...user, ...address });
+
+      //---------------------------------------------------
+      //rest parameters
+      function toplam(...args) {
+        let sonuc = 0;
+        for (let sayi of args) {
+          sonuc += sayi;
+        }
+        return sonuc;
+      }
+      console.log(toplam(1, 2, 3, 4));
+      console.log(toplam(1, 2, 3, 4, 5));
+
+      //---------------------------------------------------
+      function bilgileriGoster(isim, soyad, ...adres) {
+        console.log(isim, soyad, adres);
+      }
+      bilgileriGoster("Ramazan", "Uslu", "Hatay", "Malatya");
+    </script>
+  </body>
+</html>

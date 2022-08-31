@@ -9,7 +9,9 @@ function UI() {
     (this.correctIcon =
       '<div class="icon"><i class="fa-solid fa-check"></i></div>'),
     (this.inCorrectIcon =
-      '<div class="icon"><i class="fa-solid fa-xmark"></i></div>');
+      '<div class="icon"><i class="fa-solid fa-xmark"></i></div>'),
+    (this.time_text = document.querySelector(".time_text")),
+    (this.time_second = document.querySelector(".time_second"));
 }
 UI.prototype.soruGoster = function (soru) {
   let question = `<span>${soru.soruMetni}</span>`;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const ogrenciler = new Map();
+
+      let user = { username: "ramazanuslu" };
+
+      ogrenciler.set(1, "Ramazan USLU");
+      ogrenciler.set(12345678912, "Asya avcı");
+      ogrenciler.set(true, "Hira nur");
+      ogrenciler.set(user, "Ramazan USLU");
+
+      console.log(ogrenciler.get(1));
+      console.log(ogrenciler.get(12345678912));
+      console.log(ogrenciler.get(true));
+      console.log(ogrenciler.get(user));
+
+      let sonuc;
+      sonuc = ogrenciler.size;
+      sonuc = ogrenciler.has(2);
+      // ogrenciler.delete(1);
+      sonuc = ogrenciler.size;
+      // ogrenciler.clear();
+
+      // console.log(sonuc);
+      // console.log(ogrenciler);
+
+      // for (let x of ogrenciler.keys()) {
+      //   console.log(x);
+      // }
+
+      // for (let x of ogrenciler.values()) {
+      //   console.log(x);
+      // }
+
+      // for (let x of ogrenciler.entries()) {
+      //   console.log(x[1]);
+      // }
+
+      for (let [key, value] of ogrenciler.entries()) {
+        console.log(key, value);
+      }
+    </script>
+  </body>
+</html>

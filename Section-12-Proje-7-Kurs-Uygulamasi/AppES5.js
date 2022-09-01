@@ -37,6 +37,20 @@ UI.prototype.deleteCourse = function (element) {
   }
 };
 
+UI.prototype.showAlert = function (message, className) {
+  let alert = `
+    <div class="alert alert-${className}">
+        ${message}
+    </div>
+  `;
+  const row = document.querySelector(".row");
+  //beforeBegin, afterBegin, beforeEnd, afterEnd
+  row.insertAdjacentHTML("beforebegin", alert);
+  setTimeout(() => {
+    document.querySelector(".alert").remove();
+  }, 3000);
+};
+
 document.getElementById("new-course").addEventListener("submit", function (e) {
   const title = document.getElementById("title").value;
   const instructor = document.getElementById("instructor").value;
@@ -49,11 +63,17 @@ document.getElementById("new-course").addEventListener("submit", function (e) {
   //   create UI
   const ui = new UI();
 
-  //   add course to list
-  ui.addCourseToList(course);
+  if (title === "" || instructor === "" || image === "") {
+    ui.showAlert("Formu doldurunuz", "warning");
+  } else {
+    //   add course to list
+    ui.addCourseToList(course);
 
-  //   clear control
-  ui.clearControls();
+    //   clear control
+    ui.clearControls();
+
+    ui.showAlert("Kayıt Başarılı", "success");
+  }
 
   e.preventDefault();
 });
@@ -61,4 +81,5 @@ document.getElementById("new-course").addEventListener("submit", function (e) {
 document.getElementById("course-list").addEventListener("click", function (e) {
   const ui = new UI();
   ui.deleteCourse(e.target);
+  ui.showAlert("Silme işlemi başarılı", "danger");
 });

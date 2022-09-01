@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // login => username
+      // posts
+      // create post
+      //-------------------------------------------------
+      // sipariş
+      // siparişin hazırlanması
+
+      console.log("Start");
+      const login = (username, password, callback) => {
+        setTimeout(() => {
+          callback({ username: username, email: "info@ramazan.com" });
+        }, 1000);
+      };
+
+      const getPostsByUsername = (username, callback) => {
+        setTimeout(() => {
+          callback(["Post 1", "Post 2", "Post 3"]);
+        }, 2000);
+      };
+
+      const getPostDetails = (post, callback) => {
+        setTimeout(() => {
+          callback("Post Details");
+        }, 2000);
+      };
+
+      login("Ramazan USLU", "123", (user) => {
+        console.log(user);
+        console.log(user.username);
+        console.log(user.email);
+
+        getPostsByUsername(user.username, (posts) => {
+          console.log(posts);
+          getPostDetails(posts[0], (details) => {
+            console.log(details);
+          });
+        });
+      });
+      // callback hell
+      console.log("End");
+    </script>
+  </body>
+</html>

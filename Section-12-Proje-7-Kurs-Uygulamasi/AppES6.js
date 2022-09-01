@@ -1,6 +1,7 @@
 // Course Class
 class Course {
   constructor(title, instructor, image) {
+    this.courseID = Math.floor(Math.random() * 10000);
     this.title = title;
     this.instructor = instructor;
     this.image = image;
@@ -19,7 +20,7 @@ class UI {
               <td>${course.title}</td>
               <td>${course.instructor}</td>
               <td>
-                  <a href="#" class="btn btn-danger btn-sm delete">Delete</a>
+                  <a href="#" data-id="${course.courseID}" class="btn btn-danger btn-sm delete">Delete</a>
               </td>
           </tr>
         `;
@@ -35,6 +36,7 @@ class UI {
   deleteCourse(element) {
     if (element.classList.contains("delete")) {
       element.parentElement.parentElement.remove();
+      return true;
     }
   }
 
@@ -79,7 +81,18 @@ class Storage {
     localStorage.setItem("courses", JSON.stringify(courses));
   }
 
-  static deleteCourse() {}
+  static deleteCourse(element) {
+    if (element.classList.contains("delete")) {
+      const id = element.getAttribute("data-id");
+      const courses = Storage.getCourses();
+      courses.forEach((course, index) => {
+        if (course.courseID == id) {
+          courses.splice(index, 1);
+        }
+      });
+      localStorage.setItem("courses", JSON.stringify(courses));
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", Storage.displayCourses);
@@ -118,9 +131,9 @@ document.getElementById("course-list").addEventListener("click", function (e) {
   const ui = new UI();
 
   // delete course
-  ui.deleteCourse(e.target);
-
-  // delete from local storage
-  Storage.deleteCourse();
-  ui.showAlert("Silme işlemi başarılı", "danger");
+  if (ui.deleteCourse(e.target) === true) {
+    // delete from local storage
+    Storage.deleteCourse(e.target);
+    ui.showAlert("Silme işlemi başarılı", "danger");
+  }
 });

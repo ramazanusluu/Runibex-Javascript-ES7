@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("Start");
+
+      const serverStatus = false;
+
+      const login = (username, password) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (serverStatus) {
+              resolve({ username: username, email: "info@ramazan.com" });
+            } else {
+              reject("server is offline");
+            }
+          }, 1000);
+        });
+      };
+
+      const getPostsByUsername = (username) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(["Post 1", "Post 2", "Post 3"]);
+          }, 2000);
+        });
+      };
+
+      const getPostDetails = (post) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Post Details");
+          }, 2000);
+        });
+      };
+
+      //   login("Ramazan USLU", "123", (user) => {
+      //     console.log(user.username);
+      //     getPostsByUsername(user.username, (posts) => {
+      //       console.log(posts);
+      //       getPostDetails(posts[0], (details) => {
+      //         console.log(details);
+      //       });
+      //     });
+      //   });
+
+      //-------------------------------------------------------------
+      login("ramazanuslu", "12345")
+        .then((user) => {
+          console.log(user);
+          return getPostsByUsername(user.username);
+        })
+        .then((posts) => {
+          console.log(posts);
+          return getPostDetails(posts[0]);
+        })
+        .then((details) => {
+          console.log(details);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // callback hell
+      console.log("End");
+    </script>
+  </body>
+</html>

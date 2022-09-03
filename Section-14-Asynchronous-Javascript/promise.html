@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // console.log("Start");
+
+      // const serverStatus = false;
+
+      // const login = (username, password, successFn, errorFn) => {
+      //   setTimeout(() => {
+      //     if (serverStatus) {
+      //       successFn({ username: username, email: "info@ramazan.com" });
+      //     } else {
+      //       errorFn("server kapalı");
+      //     }
+      //   }, 1000);
+      // };
+
+      // const getPostsByUsername = (username, successFn) => {
+      //   setTimeout(() => {
+      //     successFn(["Post 1", "Post 2", "Post 3"]);
+      //   }, 2000);
+      // };
+
+      // const getPostDetails = (post, successFn) => {
+      //   setTimeout(() => {
+      //     successFn("Post Details");
+      //   }, 2000);
+      // };
+
+      // login(
+      //   "Ramazan USLU",
+      //   "123",
+      //   (user) => {
+      //     console.log(user);
+      //     console.log(user.username);
+      //     console.log(user.email);
+
+      //     getPostsByUsername(user.username, (posts) => {
+      //       console.log(posts);
+      //       getPostDetails(posts[0], (details) => {
+      //         console.log(details);
+      //       });
+      //     });
+      //   },
+      //   (error) => {
+      //     console.log(error);
+      //   }
+      // );
+      // // function error(msg) {
+      // //   console.log(msg);
+      // // }
+      // // callback hell
+      // console.log("End");
+
+      //-----------------------------------------------------------------------
+      const serverStatus = false;
+      // resolve => başarılı & reject => Hatalı
+      const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (serverStatus) {
+            resolve({ username: "ramazanuslu" });
+          } else {
+            reject("Login error");
+          }
+        }, 2000);
+      });
+      promise
+        .then((user) => {
+          console.log(user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>

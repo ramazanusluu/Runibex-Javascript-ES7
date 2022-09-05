@@ -8,13 +8,20 @@ searchProfile.addEventListener("keyup", (event) => {
   let text = event.target.value;
   if (text !== "") {
     // console.log(text);
-    profile.getProfile(text).then((res) => {
-      if (res.profile.length === 0) {
+    profile
+      .getProfile(text)
+      .then((res) => {
+        if (res.profile.length === 0) {
+          ui.showAlert(text);
+        } else {
+          console.log(res);
+          console.log(res.profile[0]);
+          ui.showProfile(res.profile[0]);
+          ui.showTodo(res.todo);
+        }
+      })
+      .catch((err) => {
         ui.showAlert(text);
-      } else {
-        console.log(res.profile[0]);
-        ui.showProfile(res.profile[0]);
-      }
-    });
+      });
   }
 });

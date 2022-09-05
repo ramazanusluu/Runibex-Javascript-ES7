@@ -35,6 +35,10 @@ class UI {
                            company: ${profile.company.name}
                         </li>
                     </ul>
+                    <h4>Todo List</h4>
+                    <ul id="todo" class="list-group">
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -48,5 +52,28 @@ class UI {
   clear() {
     this.profileContainer.innerHTML = "";
     this.alert.innerHTML = "";
+  }
+
+  showTodo(todo) {
+    let html = `
+    
+    `;
+    todo.forEach((item) => {
+      if (item.completed) {
+        html += `
+            <li class="list-group-item bg-primary">
+                ${item.title}
+            </li>
+        `;
+      } else {
+        html += `
+            <li class="list-group-item ">
+                ${item.title}
+            </li>
+    `;
+      }
+    });
+
+    this.profileContainer.querySelector("#todo").innerHTML = html;
   }
 }
